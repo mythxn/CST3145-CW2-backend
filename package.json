@@ -1,0 +1,24 @@
+{
+  "name": "cst3145-cw1-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mythxn/CST3145-CW1-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mythxn/CST3145-CW1-backend/issues"
+  },
+  "homepage": "https://github.com/mythxn/CST3145-CW1-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.4"
+  }
+}
