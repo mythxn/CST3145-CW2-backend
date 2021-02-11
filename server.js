@@ -79,9 +79,10 @@ app.put('/collection/:collectionName/:subject/:quantity', (req, res, next) => {
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 // 404 middleware
-// app.use((req, res) => {
-//     res.status(404).send("Page not found!")
-// });
+app.use((req, res, next) => {
+    res.send("Page not found!")
+    next()
+});
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server is running')
