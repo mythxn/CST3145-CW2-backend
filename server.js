@@ -10,6 +10,12 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+// logger middleware
+app.use((req, res, next) => {
+    console.log("LOGGER: " + req.url)
+    next()
+})
+
 // connect to cloud MongoDB
 const MongoClient = require('mongodb').MongoClient;
 let db;
@@ -33,6 +39,11 @@ app.get('/collection/:collectionName', (req, res) => {
 
 // deploy /public
 app.use(express.static(path.resolve(__dirname, 'public')));
+
+// 404 middleware
+// app.use((req, res) => {
+//     res.status(404).send("Page not found!")
+// });
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server is running')
