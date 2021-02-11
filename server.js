@@ -1,6 +1,7 @@
 // load dependencies
 const express = require('express')
 const bodyParser = require('body-parser');
+const path = require('path');
 const app = express()
 
 // initial setup
@@ -29,6 +30,9 @@ app.get('/collection/:collectionName', (req, res) => {
         res.send(results)
     })
 })
+
+// deploy /public
+app.use(express.static(path.resolve(__dirname, 'public')));
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server is running')
