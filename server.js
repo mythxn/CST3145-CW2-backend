@@ -53,6 +53,28 @@ app.post('/collection/:collectionName', (req, res, next) => {
     })
 })
 
+// decrease lesson quantity
+app.put('/collection/:collectionName/:subject/:quantity', (req, res, next) => {
+    req.collection.updateOne({
+            "subject": (req.params.subject)
+        }, {
+            $inc: {
+                "space": -parseInt(req.params.quantity)
+            }
+        }, {
+            safe: true,
+            multi: false
+        },
+        (e, result) => {
+            if (e) return next(e)
+            res.send((result.result.n === 1) ? {
+                msg: 'success'
+            } : {
+                msg: 'error'
+            })
+        })
+});
+
 // deploy /public
 app.use(express.static(path.resolve(__dirname, 'public')));
 
