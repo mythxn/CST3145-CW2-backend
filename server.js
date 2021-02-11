@@ -45,6 +45,14 @@ app.get('/collection/:collectionName', (req, res) => {
     })
 })
 
+// insert an order
+app.post('/collection/:collectionName', (req, res, next) => {
+    req.collection.insertOne(req.body, (e, results) => {
+        if (e) return next(e)
+        res.send(results.ops)
+    })
+})
+
 // deploy /public
 app.use(express.static(path.resolve(__dirname, 'public')));
 
